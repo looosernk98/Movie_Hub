@@ -1,0 +1,44 @@
+
+#sidebar{
+    /* width: 100px; */
+    height: calc(100vh - 80px);
+    background-color: black;
+    /* margin-top: 80px; */
+    position: fixed;
+    left: 0;
+    top: 80px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 35px 25px 25px 25px;
+    gap: 30px;
+    transition: width 1s;
+}
+
+#sidebar:hover{
+    width: 250px;
+}
+
+
+.side-list  svg{
+    width: 30px;
+    height: 30px;
+
+}
+.side-list{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.label{
+  display: none;
+  transition: display 1s;
+}
+
+.label:hover{
+    display: block;
+}
