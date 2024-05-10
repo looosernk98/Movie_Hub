@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import MovieCard from '../../common/movie_card'
 import './style.css';
 import JawanPoster from '../../asset/images/Jawan.webp'
@@ -170,21 +170,6 @@ const movies = [
 
 
 const Dashboard = () => {
-    useEffect(() => {
-        const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=true&language=en-US&page=1&sort_by=popularity.desc';
-        const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZTgxZDE1ZmViNmRlZmU4NmZkYWFmOGEyM2VlMDQwNSIsInN1YiI6IjYxNmE5MjY4NTM4NjZlMDA5M2NhZTBmZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EBqIwkJS549JTTvQ4L2d2Bh6eMtwALTE63p7V0rcmGo'
-        }
-        };
-
-         fetch(url, options)
-        .then(res => res.json())
-        .then(json => console.log('DATA: ',json))
-        .catch(err => console.error('error:' + err));
-    }, [])
     return (
         <div className='container'>
           {
