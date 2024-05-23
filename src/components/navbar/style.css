@@ -28,3 +28,10 @@ nav{
     /* clip-path: circle(25% at 50% 50%);
     shape-outside: circle(50% at 50% 50%); */
 }
+
+.filters a{
+    text-decoration: none;
+}
+.active {
+  color: rgb(102, 102, 253);
+}

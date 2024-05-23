@@ -175,13 +175,13 @@ import Movies from '../movies';
 const Dashboard = () => {
     const [ movies , setMovies] = useState([]);
 
-    const getTopRatedMovies = async () => {
-        const { data } = await getApi(API_ENDPOINTS.topRatedMovies);
-        setMovies(data.results)
-    }
-    useEffect(() => {
-        getTopRatedMovies()
-    }, [])
+    // const getTopRatedMovies = async () => {
+    //     const { data } = await getApi(API_ENDPOINTS.topRatedMovies);
+    //     setMovies(data.results)
+    // }
+    // useEffect(() => {
+    //     getTopRatedMovies()
+    // }, [])
 
     return (
         <div className='container'>
@@ -194,7 +194,7 @@ const Dashboard = () => {
           <Movies/>
         </div>
         
-        
+  
     )
 }
 

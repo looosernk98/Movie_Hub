@@ -5,6 +5,7 @@ import { filters } from '../../utils/constant'
 import { CgProfile } from "react-icons/cg";
 import logo from '../../asset/images/logo.png'
 import './style.css'
+import { Link, NavLink } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -18,7 +19,7 @@ const Navbar = () => {
             <img className='company-logo' src={logo} alt='company-logo'/>
             <div className="filters">
               {filters?.map((item, index) => (
-                <div className="filter" key={index}>{item.title}</div>
+                <NavLink to={item?.path} className="filter" key={index}>{item?.title}</NavLink>
               ))}
             </div>
             <div className="search-bar">
