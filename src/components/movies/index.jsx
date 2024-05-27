@@ -1,55 +1,70 @@
 import React, { useState } from "react"
-import CurrentlyWatching from "./currentlyWatching";
+import CurrentWatching from "./currentlyWatching";
 import TopRated from "./topRated";
 import Trending from "./trending";
 import Upcoming from "./upcoming";
+import { useSearchParams } from "react-router-dom";
 import './style.css'
-/*
- 1. Currently Watching
- 2. Popular 
- 3. Top Rated
- 4. Trending
- 5. Upcoming
-*/
+
 
 const Tabs = [
     {
         title: 'Top Rated',
         icon: '',
         component: TopRated,
+        param: 'top-rated'
     },
     {
         title: 'Currently Watching',
         icon: '',
-        component: CurrentlyWatching,
+        component: CurrentWatching,
+        param: 'currently-watching'
     },
     {
         title: 'Trending',
         icon: '',
         component: Trending,
+        param: 'trending'
+
     },
     {
         title: 'Upcoming',
         icon: '',
         component: Upcoming,
+        param: 'upcoming'
+
     },
 ]
 
 const Movies = () => {
-    const [activeTab, setActiveTab] = useState(0);
+    const [activeTab, setActiveTab] = useState(0); // 2
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const ActiveComponent = Tabs[activeTab]?.component;
+    const handleTabClick = (index, param) => {
+        setActiveTab(index)
+        // const alltabs = document.querySelectorAll('.tab-title')
+        // alltabs.forEach((item) => {
+        //     if(item.classList.contains('active')){
+        //         item.classList.remove('active')
+        //     }
+        // })
+        // event.target.classList.add('active')
+        setSearchParams({...searchParams, type: param})
+    }
 
+    const ActiveComponent = Tabs[activeTab]?.component; // trending
     return (
         <div className="movie-container">
             <div className="tab-container">
                 {
                     Tabs?.map((tab, index) => (
-                        <div key={index} onClick={() => setActiveTab(index)} className="tab-title">{tab?.title}</div>
+                        <div key={index} onClick={() =>  handleTabClick(index, tab?.param)} className={`tab-title ${index == activeTab ? 'active': ''}`}>{tab?.title}</div>
                     ))
                 }
             </div>
-            <ActiveComponent />
+            <div className="active-comp-wrapper">
+               <ActiveComponent />
+            </div>
         </div>
     )
 }

@@ -1,8 +1,9 @@
 
+
 export const API_ENDPOINTS = {
-  topRatedMovies : 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
-  popularMovies: 'https://api.themoviedb.org/3/movie/popular',
-  currentWatchingMovies: '',
-  trendingMovies: '',
-  upcoming: ''
+  topRatedMovies : '/movies/top-rated',
+  popularMovies: '/movies/popular',
+  currentWatchingMovies: '/movies/now_playing',
+  trendingMovies: '/trending/movies/week',
+  upcoming: '/movies/upcoming'
 }

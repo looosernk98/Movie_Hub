@@ -5,10 +5,19 @@
 }
 
 .movie-container{
-    
+    /* position: relative; */
 }
 
 .tab-container{
     display: flex;
     column-gap: 10px;
+    margin-bottom: 40px;
+    /* position: fixed; */
+    /* top: 200px; */
+}
+.active-comp-wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
 }

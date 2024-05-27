@@ -173,25 +173,12 @@ import Movies from '../movies';
 
 
 const Dashboard = () => {
-    const [ movies , setMovies] = useState([]);
 
-    // const getTopRatedMovies = async () => {
-    //     const { data } = await getApi(API_ENDPOINTS.topRatedMovies);
-    //     setMovies(data.results)
-    // }
-    // useEffect(() => {
-    //     getTopRatedMovies()
-    // }, [])
+   
 
     return (
         <div className='container'>
-          {/* {
-            movies?.map((movie, index) =>(
-                <MovieCard movie={movie} key={index}/>
-            ))
-          } */}
-
-          <Movies/>
+          {/* <Movies/> */}
         </div>
         
   
