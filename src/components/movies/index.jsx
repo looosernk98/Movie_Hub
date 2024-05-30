@@ -5,6 +5,7 @@ import Trending from "./trending";
 import Upcoming from "./upcoming";
 import { useSearchParams } from "react-router-dom";
 import './style.css'
+import Popular from "./popular";
 
 
 const Tabs = [
@@ -32,6 +33,13 @@ const Tabs = [
         icon: '',
         component: Upcoming,
         param: 'upcoming'
+
+    },
+    {
+        title: 'Popular',
+        icon: '',
+        component: Popular,
+        param: 'popular'
 
     },
 ]
