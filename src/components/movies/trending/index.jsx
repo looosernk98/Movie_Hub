@@ -18,6 +18,9 @@ const Trending = () => {
     }
 
     useEffect(() => {
+        if(movies?.length) return;
+        console.log('searchParam: ', searchParam);
+        console.log('USEEFFECT', movies);
         getTrendingMovies()
     }, [])
 
@@ -43,7 +46,7 @@ const Trending = () => {
           }
           {
             showMovieOverview ?
-             <Modal>
+             <Modal open={showMovieOverview} setOpen={() => !showMovieOverview}>
                 <Overview movieId={movieId}/>
             </Modal>
              : null

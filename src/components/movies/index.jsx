@@ -6,6 +6,7 @@ import Upcoming from "./upcoming";
 import { useSearchParams } from "react-router-dom";
 import './style.css'
 import Popular from "./popular";
+import { useEffect } from "react";
 
 
 const Tabs = [
@@ -48,6 +49,11 @@ const Movies = () => {
     const [activeTab, setActiveTab] = useState(0); // 2
     const [searchParams, setSearchParams] = useSearchParams();
 
+    useEffect(() => {
+      setSearchParams({ type: 'top-rated'})
+    }, [])
+
+
     const handleTabClick = (index, param) => {
         setActiveTab(index)
         // const alltabs = document.querySelectorAll('.tab-title')
@@ -57,7 +63,8 @@ const Movies = () => {
         //     }
         // })
         // event.target.classList.add('active')
-        setSearchParams({...searchParams, type: param})
+
+        setSearchParams({type: param})
     }
 
     const ActiveComponent = Tabs[activeTab]?.component; // trending

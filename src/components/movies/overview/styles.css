@@ -1,0 +1,22 @@
+.overview{
+    width: 70%;
+    height: 90%;
+    background-color: black;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.separator{
+    border: 2px solid #fff;
+    opacity: 0.5
+}
+
+.cancel{
+    width: 150px;
+    height: 40px;
+    color: #000;
+    /* border: 1px solid white;
+    text-align: center; */
+    cursor: pointer;
+}

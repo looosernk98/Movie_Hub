@@ -1,6 +1,9 @@
 import React from "react";
+import './styles.css'
+import { IoIosStar } from "react-icons/io";
 
-const DATA = {
+
+const data = {
   adult: false,
   backdrop_path: "/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
   belongs_to_collection: null,
@@ -57,12 +60,58 @@ const DATA = {
   vote_count: 26218,
 };
 
-const Overview = ({ movieId}) => {
+const actions = [
+  {
+    label:'Download',
+    icon:'',
+  },
+  {
+    label:'Share',
+    icon:'',
+  },
+  {
+    label:'Like',
+    icon:'',
+  },
+  {
+    label:'Dislike',
+    icon:'',
+  }
+]
+
+const Overview = ({ movieId }) => {
 
     return(
         <div className="overview">
-         <h1>Overview of selected movie</h1>
-         <h2>{movieId}</h2>
+          <button onClick={() => {}} type="button" className="cancel">Cancel</button>
+          <div className="movie-details">
+            <div className="video">
+              <img src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`} alt="movie-poster"/>
+            </div>
+            <div className="movie-name">
+               <h3>{data.title}</h3>
+               <div className="div">
+                  {data.genres.map((genre) =>(
+                    <span>{genre.name}</span>
+                  ))}
+                  <span><IoIosStar/>{data.vote_average}</span>
+               </div>
+            </div>
+            <div className="actions">
+               {actions.map((action, index) => (
+                <div key={index}>
+                   <img src={action.icon} alt=""/>
+                   <span>{action.label}</span>
+                </div>
+               ))}
+            </div>
+            <div className="separator"></div>
+            <div className="story-line"></div>
+            <div className="top-cast">
+
+            </div>
+          </div>
+          <div className="recommendations"></div>
         </div>
     )
 }
