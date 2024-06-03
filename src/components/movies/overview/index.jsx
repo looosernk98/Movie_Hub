@@ -1,7 +1,10 @@
-import React from "react";
+import React, { act } from "react";
 import './styles.css'
 import { IoIosStar } from "react-icons/io";
-
+import { IoDownloadOutline } from "react-icons/io5";
+import { IoShareSocial } from "react-icons/io5";
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDislike } from "react-icons/ai";
 
 const data = {
   adult: false,
@@ -63,19 +66,19 @@ const data = {
 const actions = [
   {
     label:'Download',
-    icon:'',
+    icon: <IoDownloadOutline/>,
   },
   {
     label:'Share',
-    icon:'',
+    icon: <IoShareSocial/>,
   },
   {
     label:'Like',
-    icon:'',
+    icon: <AiOutlineLike/>,
   },
   {
     label:'Dislike',
-    icon:'',
+    icon:<AiOutlineDislike/>,
   }
 ]
 
@@ -83,35 +86,47 @@ const Overview = ({ movieId }) => {
 
     return(
         <div className="overview">
-          <button onClick={() => {}} type="button" className="cancel">Cancel</button>
           <div className="movie-details">
             <div className="video">
               <img src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`} alt="movie-poster"/>
             </div>
+            <br />
             <div className="movie-name">
                <h3>{data.title}</h3>
-               <div className="div">
+               <div className="genre-list">
                   {data.genres.map((genre) =>(
-                    <span>{genre.name}</span>
+                    <span className="genre">{genre.name}</span>
                   ))}
-                  <span><IoIosStar/>{data.vote_average}</span>
+                  <span className="rating"><IoIosStar/>{data.vote_average}</span>
                </div>
             </div>
+            <br />
             <div className="actions">
-               {actions.map((action, index) => (
-                <div key={index}>
-                   <img src={action.icon} alt=""/>
-                   <span>{action.label}</span>
-                </div>
-               ))}
+               {actions.map((action, index) => {
+                const icon = action?.icon;
+                 return(
+                  <div className="action" key={index}>
+                     {icon}
+                     <span>{action.label}</span>
+                  </div>
+                 )
+               })}
             </div>
+            <br />
             <div className="separator"></div>
-            <div className="story-line"></div>
+            <br />
+            <p className="story-line">
+              <span>Story Line:</span>{data.overview}
+            </p>
+            <br />
             <div className="top-cast">
-
+               <h3>Top cast</h3>
             </div>
+            <br />
           </div>
-          <div className="recommendations"></div>
+          <div className="recommendations">
+             <h2>Recommendations</h2>
+          </div>
         </div>
     )
 }

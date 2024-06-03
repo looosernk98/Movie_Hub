@@ -1,22 +1,52 @@
 .overview{
-    width: 70%;
-    height: 90%;
-    background-color: black;
-    border-radius: 8px;
-    padding: 20px;
-    overflow-y: auto;
+    
 }
 
 .separator{
-    border: 2px solid #fff;
-    opacity: 0.5
+    border: 0.5px solid #fff;
+    opacity: 0.2;
 }
 
-.cancel{
-    width: 150px;
-    height: 40px;
-    color: #000;
-    /* border: 1px solid white;
-    text-align: center; */
-    cursor: pointer;
+.movie-name{
+    display: flex;
+    justify-content: space-between;
+}
+.actions{
+    display: flex;
+    justify-content: start;
+    column-gap: 30px;
+}
+
+.action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.genre-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.genre{
+    font-size: 12px;
+}
+
+.story-line span{
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 10px;
+    opacity: 1;
+}
+
+.story-line{
+    opacity: 0.8;
+    font-size: 14px;
 }

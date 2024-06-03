@@ -177,8 +177,8 @@ const Dashboard = () => {
    
 
     return (
-        <div className='container'>
-          {/* <Movies/> */}
+        <div className='dashboard'>
+           <h1>Dashboard</h1>
         </div>
         
   

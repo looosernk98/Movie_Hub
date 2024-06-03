@@ -35,7 +35,16 @@ const Trending = () => {
         const param = searchParam // type ULRSearchParam
         param.set("movieId", movieId) // param -> { type: popular, movieId: 12334}
         setSearchParam(param)
-    }    
+    }   
+    
+    const onCloseMovieOverview = () =>{
+        setShowMovieOverview(false);
+        
+        const param = searchParam;
+        param.delete("movieId")
+        setSearchParam(param)
+
+    }
 
     return(
         <>
@@ -46,7 +55,7 @@ const Trending = () => {
           }
           {
             showMovieOverview ?
-             <Modal open={showMovieOverview} setOpen={() => !showMovieOverview}>
+             <Modal onClose={onCloseMovieOverview}>
                 <Overview movieId={movieId}/>
             </Modal>
              : null

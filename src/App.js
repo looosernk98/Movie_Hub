@@ -11,6 +11,11 @@ function App() {
 
   const ROUTES = [
     {
+      name:'Dashboard',
+      path: '/',
+      component: <Dashboard/>,
+    },
+    {
       name: 'Movies',
       path: '/movies',
       component: <Movies/>,
