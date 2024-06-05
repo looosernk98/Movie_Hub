@@ -5,5 +5,6 @@ export const API_ENDPOINTS = {
   popularMovies: '/movies/popular',
   currentWatchingMovies: '/movies/now_playing',
   trendingMovies: '/movies/trending',
-  upcoming: '/movies/upcoming'
+  upcoming: '/movies/upcoming',
+  movieDetailsById: (id) => `/movie/${id}`
 }
