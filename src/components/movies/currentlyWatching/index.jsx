@@ -33,6 +33,15 @@ const CurrentWatching = () => {
         setSearchParam(param)
     }
 
+    const onCloseMovieOverview = () =>{
+        setShowMovieOverview(false);
+        
+        const param = searchParam;
+        param.delete("movieId")
+        setSearchParam(param)
+
+    }
+
     return(
         <>
          {
@@ -42,7 +51,7 @@ const CurrentWatching = () => {
           }
           {
             showMovieOverview ?
-             <Modal>
+             <Modal onClose={onCloseMovieOverview}>
                 <Overview movieId={movieId}/>
             </Modal>
              : null

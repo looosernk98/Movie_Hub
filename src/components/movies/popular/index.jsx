@@ -35,6 +35,15 @@ const Popular = () => {
         setSearchParam(param)
     }
 
+    const onCloseMovieOverview = () =>{
+        setShowMovieOverview(false);
+        
+        const param = searchParam;
+        param.delete("movieId")
+        setSearchParam(param)
+
+    }
+
 
     return(
         <>
@@ -45,7 +54,7 @@ const Popular = () => {
           }
           {
             showMovieOverview ?
-             <Modal>
+             <Modal onClose={onCloseMovieOverview}>
                 <Overview movieId={movieId}/>
             </Modal>
              : null

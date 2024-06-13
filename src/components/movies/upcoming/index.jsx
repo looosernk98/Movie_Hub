@@ -21,6 +21,15 @@ const Upcoming = () => {
         getUpcomingMovies()
     }, [])
 
+    const onCloseMovieOverview = () =>{
+        setShowMovieOverview(false);
+        
+        const param = searchParam;
+        param.delete("movieId")
+        setSearchParam(param)
+
+    }
+
     useEffect(() => {
         if(!searchParam.has('movieId')) return;
         const mid = searchParam.get('movieId');
@@ -42,7 +51,7 @@ const Upcoming = () => {
           }
           {
             showMovieOverview ?
-             <Modal>
+             <Modal onClose={onCloseMovieOverview}>
                 <Overview movieId={movieId}/>
             </Modal>
              : null

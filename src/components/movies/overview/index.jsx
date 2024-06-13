@@ -8,6 +8,8 @@ import { AiOutlineDislike } from "react-icons/ai";
 import { useState } from "react";
 import { API_ENDPOINTS } from "../../../api/integration";
 import { getApi } from '../../../api/services';
+import MovieCard from "../../../common/movie_card";
+import { useSearchParams } from "react-router-dom";
 
 // const data = {
 //   adult: false,
@@ -88,19 +90,39 @@ const actions = [
 
 const Overview = ({ movieId }) => {
   const [data, setData] = useState({});
+  const [recommendationsList, setRecommendationsList] = useState([]);
+  const [movieID,setMovieID] = useState();
+  const [searchParam , setSearchParam] = useSearchParams();
 
+  useEffect(() => {
+    setMovieID(movieId)
+  }, [movieId])
 
   const fetchMovieDetails = async () => {
-    const { data } = await getApi(API_ENDPOINTS.movieDetailsById(movieId));
+    const { data } = await getApi(API_ENDPOINTS.movieDetailsById(movieID));
     setData(data)
-}
+  }
 
 useEffect(() => {
-  if(!movieId) return;
+  if(!movieID) return;
 
   fetchMovieDetails()
-}, [])
+}, [movieID])
 
+useEffect(() => {
+  const fetchRecommendations = async () =>{
+    const { data } = await getApi(API_ENDPOINTS.recommendations(movieId));
+    setRecommendationsList(data.results)
+  }
+
+  fetchRecommendations()
+}, [movieID])
+
+const handleOverview = (id) => {
+   searchParam.set('movieId', id)
+   setSearchParam(searchParam);
+   setMovieID(id);
+}
     return(
         <div className="overview">
           <div className="movie-details">
@@ -118,7 +140,7 @@ useEffect(() => {
                 <div className="languages">
                   <span>Languages:</span>
                   {data?.spoken_languages?.map((language, index) =>(
-                    <span key={index}>{language.name}</span>
+                    <span key={index}>{language.name}{`${data.spoken_languages.length-1 == index ? '' : ','}`}</span>
                   ))}
                  
                 </div>
@@ -159,7 +181,12 @@ useEffect(() => {
             <br />
           </div>
           <div className="recommendations">
-             <h2>Recommendations</h2>
+             <h2>Recommendations</h2><br />
+             <div className="recommendation-container">
+             { recommendationsList.map((recommMovie, idx) => (
+                <MovieCard handleOverview={() => handleOverview(recommMovie?.id)} movie={recommMovie} key={idx}/>
+             ))}
+             </div>
           </div>
         </div>
     )

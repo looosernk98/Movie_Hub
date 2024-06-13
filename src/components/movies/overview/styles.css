@@ -42,6 +42,12 @@
 .genre-list :not(:first-child){
     margin-right: 5px;
 }
+.languages :first-child{
+    margin-right: 10px;
+}
+.languages :not(:first-child){
+    margin-right: 5px;
+}
 
 .genre{
     font-size: 14px;
@@ -97,4 +103,10 @@
     width: 100%;
 }
 
+.recommendation-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
