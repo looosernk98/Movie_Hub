@@ -5,21 +5,27 @@ import { getApi } from '../../../api/services';
 import MovieCard from '../../../common/movie_card';
 import Overview from '../overview';
 import Modal from '../../../atoms/modal';
+import MovieList from '../../../common/movieList';
 
 const TopRated = () => {
     const [movies , setMovies] = useState([]);
     const [searchParam, setSearchParam] = useSearchParams() // { type: popular } -> { movieId: 12334}
     const [showMovieOverview, setShowMovieOverview] = useState(false);
     const [movieId, setMovieId] = useState(null);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const [totalMoviesData, setTotalMoviesData] = useState(0)
 
     const getTopRatedMovies = async () => {
-        const { data } = await getApi(API_ENDPOINTS.topRatedMovies);
+        const { data } = await getApi(API_ENDPOINTS.topRatedMovies, { page});
         setMovies(data.results)
+        setTotalMoviesData(data.total_results)
+        setTotalPages(data.total_pages);
     }
 
     useEffect(() => {
         getTopRatedMovies()
-    }, [])
+    }, [page])
 
     useEffect(() => {
         if(!searchParam.has('movieId')) return;
@@ -45,11 +51,18 @@ const TopRated = () => {
 
     return(
         <>
-         {
-            movies?.map((movie, index) =>(
-                <MovieCard handleOverview={() => handleMovieOverview(movie?.id)} movie={movie} key={index}/>
-            ))
-          }
+        
+          <MovieList 
+            handleMovieOverview = {handleMovieOverview} 
+            movies={movies} 
+            page={page} 
+            totalPages={totalPages}
+            totalMoviesData={totalMoviesData}
+            goToNextPage = {() => setPage(page+1)} 
+            goToPrevPage = {() => setPage(page - 1)}
+            inputPageHandler = {(e) => setPage(e.target.value)}
+           />
+
           {
             showMovieOverview ?
              <Modal onClose={onCloseMovieOverview}>

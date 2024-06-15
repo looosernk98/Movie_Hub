@@ -1,0 +1,39 @@
+.pagination{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 0px;
+    align-items: center;
+}
+
+.btn{
+    color: black;
+    padding: 10px;
+    width: 75px;
+    font-weight: 800;
+    cursor: pointer;
+}
+.pagination-actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+    font-weight: 700;
+
+}
+.page-input-container{
+   
+}
+.page-input{
+  background-color: #FFF;
+  color: #000;
+  width: 80px;
+  height: 40px;
+  margin: 0px 5px;
+  font-weight: 700;
+}
+
+input:focus{
+    outline: none;
+}
+

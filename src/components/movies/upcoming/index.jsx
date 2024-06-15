@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { API_ENDPOINTS } from '../../../api/integration';
 import { getApi } from '../../../api/services';
 import Modal from '../../../atoms/modal';
+import MovieList from '../../../common/movieList';
 import MovieCard from '../../../common/movie_card';
 import Overview from '../overview';
 
@@ -44,11 +45,13 @@ const Upcoming = () => {
     }
     return(
         <>
-         {
+         {/* {
             movies?.map((movie, index) =>(
                 <MovieCard handleOverview={() => handleMovieOverview(movie?.id)} movie={movie} key={index}/>
             ))
-          }
+          } */}
+          <MovieList handleMovieOverview = {handleMovieOverview} movies={movies} page={0} setPage={() => {}}/>
+
           {
             showMovieOverview ?
              <Modal onClose={onCloseMovieOverview}>

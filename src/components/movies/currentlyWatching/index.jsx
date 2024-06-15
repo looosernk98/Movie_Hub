@@ -5,6 +5,7 @@ import { getApi } from '../../../api/services';
 import MovieCard from '../../../common/movie_card';
 import Overview from '../overview';
 import Modal from '../../../atoms/modal';
+import MovieList from '../../../common/movieList';
 
 const CurrentWatching = () => {
     const [movies , setMovies] = useState([]);
@@ -44,11 +45,14 @@ const CurrentWatching = () => {
 
     return(
         <>
-         {
+         {/* {
             movies?.map((movie, index) =>(
                 <MovieCard handleOverview={() => handleMovieOverview(movie?.id)} movie={movie} key={index}/>
             ))
-          }
+          } */}
+
+          <MovieList handleMovieOverview = {handleMovieOverview} movies={movies} page={0} setPage={() => {}}/>
+
           {
             showMovieOverview ?
              <Modal onClose={onCloseMovieOverview}>
